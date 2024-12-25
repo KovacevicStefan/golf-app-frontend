@@ -1,0 +1,31 @@
+<div class="background">
+    <div class="container anim">
+        <div class="left center">
+            <div class="form-box ">
+                <form>
+                    <div class="inputs">
+                        <div class="namelast">
+                            <input type="text" [(ngModel)]="message.name" name="name" required placeholder="Ime*" style="width: 192px;">
+                            <input type="text" [(ngModel)]="message.lastName" name="lastName" required placeholder="Prezime*" style="width: 192px;">
+                        </div>
+                        <input type="text" [(ngModel)]="message.email" name="email" required placeholder="Email*">
+                        <input type="text" [(ngModel)]="message.subject" name="subject" placeholder="Naslov">
+                    </div>
+                    <div class="textarea center mb-4">
+                        <textarea name="" [(ngModel)]="message.message" name="message" placeholder="Napisite nam kratku poruku" ></textarea>
+                    </div>
+                    <div>
+                        <a (click)="sendMessage()" class="link active">Posalji poruku</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="right">
+            <h1 class="m-ver" style="font-weight: 700;">Kontakt</h1>
+            <div class="m-ver">
+                <p class="text" >Želimo da čujemo Vaše mišljenje! Bilo da imate pitanje, sugestiju ili samo želite da nas pozdravite, napišite nam poruku putem forme.</p>
+                <p class="text">{{email}} <br> Tel: 1-800-000-0000</p>   
+            </div>    
+        </div>
+    </div>
+</div>

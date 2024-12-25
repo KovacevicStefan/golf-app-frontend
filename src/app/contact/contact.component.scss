@@ -1,0 +1,127 @@
+.background {
+    height: 83vh;
+    background: linear-gradient(#34352a, rgb(104, 117, 58));
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    height: 100%;
+}
+
+h1, p {
+    color: #000000b2;
+}
+
+.right {
+    width: 50%;
+    text-align: justify;
+}
+
+.left {
+    width: 50%;
+}
+
+.form-box {
+    border-radius: 5px;
+    background-color: #0000008f;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: #34352a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+    padding: 0.5rem;
+    background-color: #34352a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 200px;
+    resize: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.namelast {
+    width: 400px;
+    display: flex;
+    gap: 16px;
+}
+
+.text {
+    width: 80%;
+}
+
+@keyframes contact-anim {
+    0% {
+        transform: translateX(-200px);
+        opacity: 0;
+    }
+    40% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(-50px);
+    }
+    60% {
+        transform: translateX(0px);
+    }
+    70% {
+        transform: translateX(-25px);
+    }
+    80% {
+        transform: translateX(0px);
+    }
+    90% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.anim {
+    animation-name: contact-anim;
+    animation-duration: 1s;
+}
+
+.anim-rev {
+    animation-name: contact-anim;
+    animation-duration: 1s;
+    animation-direction: reverse;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+    
+    .container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .right {
+        display: none;
+    }
+}
