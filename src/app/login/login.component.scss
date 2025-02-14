@@ -1,0 +1,42 @@
+.background {
+    height: calc(100vh - 100px);
+    background: linear-gradient(#34352a, rgb(104, 117, 58));
+}
+
+.container {
+    height: 100%;
+}
+
+.heading {
+    color: rgb(122, 122, 122);
+}
+
+.link {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.form-box {
+    border-radius: 5px;
+    background-color: #0000008f;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: #34352a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 350px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,106 @@
+.background {
+    background-color: #302e2b;
+}
+
+.container {
+    flex-direction: column;
+}
+
+.image {
+    border-radius: 50%;
+}
+
+.heading {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 40px;
+    color: white;
+}
+
+.box {
+    height: 700px;
+    width: 100%;
+    background-color: #262522;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tournament-name {
+    font-weight: 500;
+}
+
+.pg {
+    font-weight: 200;
+    margin-bottom: 0.5em;
+}
+
+.result-box {
+    padding: 1.2em;
+    width: 100%;
+    border-radius: 5px;
+    background: #34352a;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.head-date {
+    margin-bottom: 1em;
+    width: 100%;
+    border-radius: 5px;
+    padding: 0.5em;
+    background-color: #525348;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.head-date p{
+    margin: 0;
+}
+
+hr {
+    margin: 5px;
+}
+
+.date {
+    font-size: small;
+}
+
+.stats {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+table.customTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #3f4133;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+table.customTable td, table.customTable th {
+    font-size: 14px;
+    padding: 0.5em;
+    text-align: center;
+}
+
+table.customTable th {
+    background-color: #525348;
+    border-bottom: 1px solid rgb(53, 53, 53);
+    border-right: 1px solid rgb(53, 53, 53);
+    
+}
+
+table.customTable td {
+    border-right: 1px solid rgb(53, 53, 53);
+}
+
+  

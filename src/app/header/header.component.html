@@ -1,0 +1,22 @@
+<header [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }" class="header center {{sharedService.style}}">
+    <div class="content container center">
+        <a href=""><img src="logo.png" width="80px" alt=""></a>
+        <div class="nav-bar">
+            <ul class="menu">
+                <li><a [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }"  class="link" href="">Početna</a></li>
+                <li><a [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }"  class="link" href="/turniri">Turniri</a></li>
+                <li><a [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }"  class="link" href="">O nama</a></li>
+                <li><a [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }"  class="link" href="/#con">Kontakt</a></li>
+                <li><a [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }"  class="link active" href="/login">Prijavi se</a></li>
+            </ul>
+        </div>
+        <button class="menu-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-list" viewBox="0 0 16 16" (click)="showMenu()">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+            </svg>
+        </button>
+    </div>
+    <div class="menu-open">
+        
+    </div>
+</header>

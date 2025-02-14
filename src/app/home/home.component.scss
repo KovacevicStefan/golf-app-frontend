@@ -1,0 +1,144 @@
+.banner {
+    //position: fixed;   
+    //left: 0;
+    //right: 0;
+    //z-index: -1;
+    height: 93vh;
+    background: url("udarac.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.contact-line {
+    height: 7vh;
+    //background-color: #41422f;
+    background-color: #34352a;
+    border-top: 1px solid rgb(68, 68, 68);
+    //border-bottom: 1px solid rgb(68, 68, 68);
+}
+
+.text {
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+.heading {
+    font-weight: 700;
+}
+
+.font-color {
+    color: #fbf2dc;
+}
+
+.btn-register {
+    margin-top: 2rem;
+}
+
+.b-big {
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.content {
+    width: 45%;
+    text-align: justify;
+}
+
+@media (max-width: 992px) {
+    
+    .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 85%;
+    }
+
+    .small-screen {
+        display: flex;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .banner {
+        background: url("udarac-small.jpg");
+        background-size: cover;
+    }
+
+}
+
+@keyframes animacija {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);   
+    }
+}
+
+@keyframes arrow {
+    0% {
+        transform: translateY(-5px);
+    }
+    50% {
+        transform: translateY(0px);   
+    }
+    100% {
+        transform: translateY(-5px);   
+    }
+}
+
+.arrow-anim {
+    animation: arrow;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    
+}
+
+.slideanim {
+    animation-name: animacija;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: none;
+}
+
+.social-network {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.contact-line {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center !important;
+}
+
+svg {
+    transition: fill 0.3s ease;
+}
+
+svg:hover {
+    fill: #9fa09a;
+    cursor: pointer;
+}

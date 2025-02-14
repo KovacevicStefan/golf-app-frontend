@@ -1,0 +1,22 @@
+<div class="under-header background">
+    <div class="container center">
+        <div class="mt-5 mb-2 heading">
+            <h1>Turniri</h1>
+        </div>
+        <div class="mb-5 bg-card" *ngIf="tournamentCount()">
+            <ng-container *ngFor="let tournament of dataSource">
+                <div class="tournament my-1" (click)="details(tournament.id)">
+                    <div class="info">
+                        <h3>{{tournament.name}}</h3>
+                        <p class="pg">{{tournament.description}}.</p>
+                        <p class="mb-0">{{tournament.date | date: "dd. MM. yyyy."}}</p>
+                   </div>
+                   <div class="image center">
+                        <img class="image-tag" src="logo.png" width="500px" alt="">
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,60 @@
+.sb-background {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.snackbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    border-radius: 5px;
+    bottom: 1em;
+    width: 500px;
+    padding: 0.4em;
+    background-color: #000000b9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: scaleX(-1);
+
+    &.empty-required {
+        display: none;
+    }
+}
+
+@keyframes sb-show {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.sb-anim {
+    animation-name: sb-show;
+    animation-duration: 0.3s;
+}
+
+.snackbar p {
+    color: #fbf2dc;
+    margin: 0;
+    font-style: normal;
+    padding: 0.3em;
+    font-size: 1rem;
+}
+
+.snackbar a {
+    text-decoration: none;
+    padding: 0.3em;
+    font-size: 1rem;
+    color: #fbf2dc;
+    transition: 0.1s ease;
+    border-radius: 5px;
+}
+
+.snackbar a:hover {
+    cursor: pointer;
+    background-color: var(--green);
+}

@@ -1,0 +1,42 @@
+<div class="under-header background">
+    <div class="container center">
+        <div class="my-5 heading">
+            <img src="{{profileData?.image}}" class="image" width="80px" alt="">
+            <div>
+                <h1 style="font-weight: 200;">{{profileData?.firstName}} {{profileData?.lastName}}</h1>
+                <p class="pg">{{profileData?.email}}</p>
+            </div>
+        </div>
+        <div class="mb-5 box">
+            <h3>Rezultati</h3>
+
+            <div class="result-box" *ngFor="let tournament of userTournaments">
+                <div class="head-date">
+                    <p class="tournament-name">{{tournament.tournamentName}}</p>
+                    <hr>
+                    <p class="date">Datum - {{tournament.dateJoined | date: "dd.MM.yyyy."}}</p>
+                </div>
+                <div class="stats">
+                    <table class="customTable">
+                        <thead>
+                          <tr>
+                            <th style="width: 25%; border-top-left-radius: 5px;">Ime</th>
+                            <th style="width: 10%;">PAR</th>
+                            <th *ngFor="let result of roundResults[tournament.resultId]">{{result.roundIndex}}. runda</th>
+                            <th style="width: 10%; border-top-right-radius: 5px; border-right: none;">Ukupno</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>{{profileData?.firstName}} {{profileData?.lastName}}</td>
+                            <td>0</td>
+                            <td *ngFor="let result of roundResults[tournament.resultId]">{{result.totalStrokes}}</td>
+                            <td style="border-right: none;">0</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
