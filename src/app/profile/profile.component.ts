@@ -4,7 +4,6 @@ import { User } from '../app.models/user.model';
 import { ActivatedRoute } from '@angular/router';
 import { TournamentsService } from '../app.services/tournaments/tournaments.service';
 import { CommonModule } from '@angular/common';
-import { Result } from '../app.models/result.model';
 
 @Component({
   selector: 'app-profile',
@@ -18,15 +17,13 @@ export class ProfileComponent {
 
   profileData?: User;
   userTournaments?: any[];
-  results?: Result[];
-  roundResults: { [resultId: number]: any[] } = {};
-  totalStrokes?: number = 0;
+  tournamentResults: { [resultId: number]: any } = {};
 
   constructor(
     private service: UserService,
     private route: ActivatedRoute,
     private tournamentService: TournamentsService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getRouteParams();
@@ -41,28 +38,27 @@ export class ProfileComponent {
   }
 
   public loadData(username: string) {
-    this.service.getUserByUsername(username).subscribe(data => {
+    this.service.getUserByUsername(username).subscribe((data) => {
       this.profileData = data;
     });
   }
 
   public loadPlayerTournaments(username: string) {
-    this.tournamentService.getTournamentsByPlayerUsername(username).subscribe(data => {
+    this.tournamentService.getTournamentsByPlayerUsername(username).subscribe((data) => {
       this.userTournaments = data;
       this.userTournaments.forEach((tournament) => {
-        this.loadResultsByRound(tournament.resultId);
-      })
+        this.loadTournamentResult(tournament.resultId);
+      });
     });
   }
 
-  public loadResultsByRound(resultId: number) {
-    this.tournamentService.getResultsByRounds(resultId).subscribe(data => {
-      this.roundResults[resultId] = data;
-
-      for(let result of this.roundResults[resultId]) {
-        this.totalStrokes += result.totalStrokes;
-      }
+  public loadTournamentResult(resultId: number) {
+    this.tournamentService.getResultsByRounds(resultId).subscribe((data) => {
+      this.tournamentResults[resultId] = data;
     });
   }
 
+  public details(id: number): void {
+    window.location.href = `/turniri/${id}`;
+  }
 }
