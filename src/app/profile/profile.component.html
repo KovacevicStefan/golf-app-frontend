@@ -11,7 +11,7 @@
             <h3>Rezultati</h3>
 
             <div class="result-box" *ngFor="let tournament of userTournaments">
-                <div class="head-date">
+                <div class="head-date" (click)="details(tournament.tournamentId)">
                     <p class="tournament-name">{{tournament.tournamentName}}</p>
                     <hr>
                     <p class="date">Datum - {{tournament.dateJoined | date: "dd.MM.yyyy."}}</p>
@@ -22,16 +22,16 @@
                           <tr>
                             <th style="width: 25%; border-top-left-radius: 5px;">Ime</th>
                             <th style="width: 10%;">PAR</th>
-                            <th *ngFor="let result of roundResults[tournament.resultId]">{{result.roundIndex}}. runda</th>
+                            <th *ngFor="let result of tournamentResults[tournament.resultId]?.roundResults">{{result?.roundIndex}}. runda</th>
                             <th style="width: 10%; border-top-right-radius: 5px; border-right: none;">Ukupno</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <td>{{profileData?.firstName}} {{profileData?.lastName}}</td>
-                            <td>0</td>
-                            <td *ngFor="let result of roundResults[tournament.resultId]">{{result.totalStrokes}}</td>
-                            <td style="border-right: none;">0</td>
+                            <td>{{tournamentResults[tournament.resultId]?.totalPar || 0}}</td>
+                            <td *ngFor="let result of tournamentResults[tournament.resultId]?.roundResults">{{result?.totalStrokes}}</td>
+                            <td style="border-right: none;">{{ tournamentResults[tournament.resultId]?.totalStrokes }}</td>
                           </tr>
                         </tbody>
                       </table>

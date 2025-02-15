@@ -58,6 +58,12 @@
     padding: 0.5em;
     background-color: #525348;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+}
+
+.head-date:hover {
+    cursor: pointer;
+    background-color: var(--green);
 }
 
 .head-date p{

@@ -11,7 +11,8 @@ export class TournamentsService {
 
   private readonly API_URL = 'http://localhost:8080/api/tournaments';
   private readonly API_PLAYERS = 'http://localhost:8080/api/players';
-  private readonly API_RESULTS = 'http://localhost:8080/api/results';
+  private readonly API_HOLES = `http://localhost:8080/api/holes`;
+  private readonly API_ROUNDS = `http://localhost:8080/api/rounds`;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -49,7 +50,23 @@ export class TournamentsService {
   }
 
   public getResultsByRounds(resultId: number): Observable<any[]> {
-    return this.httpClient.get<any[]>(`http://localhost:8080/api/holes/rounds/${resultId}`).pipe(
+    return this.httpClient.get<any[]>(`${this.API_HOLES}/rounds/${resultId}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(() => new Error(error.message));
+      })
+    );
+  }
+
+  public getRoundsByResultId(resultId: number): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${this.API_ROUNDS}/result/${resultId}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(() => new Error(error.message));
+      })
+    );
+  }
+
+  public getHolesByRoundId(roundId: number): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${this.API_HOLES}/round/${roundId}`).pipe(
       catchError((error: HttpErrorResponse) => {
         return throwError(() => new Error(error.message));
       })
