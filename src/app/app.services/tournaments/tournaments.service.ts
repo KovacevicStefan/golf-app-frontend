@@ -72,4 +72,12 @@ export class TournamentsService {
       })
     );
   }
+
+  public getTournamentPlayerByResultId(resultId: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.API_PLAYERS}/result/${resultId}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(() => new Error(error.message));
+      })
+    );
+  }
 }
