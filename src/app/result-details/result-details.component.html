@@ -1,0 +1,50 @@
+<div class="under-header">
+    <div class="container pb-5">
+        <div class="pt-5 pb-4 heading">
+            <div class="logo">
+                <img class="image-tag" src="logo.png" width="100px" alt="">
+            </div>
+            <div class="description">
+                <h1>{{player?.tournamentName}}</h1>
+                <p class="pg">Rezultati za korisnika {{player?.playerUsername}}</p>
+            </div>
+        </div>
+        <div class="bg-card">
+            <div *ngFor="let round of rounds" class="result">
+                <div class="round">{{round.indexNumber}}. runda</div>
+                <div class="holes">
+<!--                     <div class="top">
+                        <p class="label">Rupa</p>
+                    </div> -->
+                    <div class="bottom">
+                        <div class="profile">
+                            <img src="{{player?.playerImage}}" width="50px" alt="">
+                            <h5>{{player?.playerUsername}}</h5>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td *ngFor="let hole of holes[round.id]" class="hole-number" style="font-size: small;"> {{hole.number}} </td>
+                                </tr>
+                                <tr>
+                                    <th *ngFor="let hole of holes[round.id]"> {{hole.par}} </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td *ngFor="let hole of holes[round.id]" class="single-result" id="{{hole.score}}"> {{hole.strokes || 0}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="legend">
+                <div *ngFor="let score of scoreCategories">
+                    <input id="{{score.color}}" type="text" disabled>
+                    <label>{{score.name}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

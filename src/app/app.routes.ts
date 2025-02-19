@@ -4,11 +4,13 @@ import { TournamentsComponent } from './tournaments/tournaments.component';
 import { LoginComponent } from './login/login.component';
 import { TournamentDetailsComponent } from './tournament-details/tournament-details.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ResultDetailsComponent } from './result-details/result-details.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'turniri', component: TournamentsComponent },
     { path: 'turniri/:id', component: TournamentDetailsComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'profile/:username', component: ProfileComponent}
+    { path: 'profile/:username', component: ProfileComponent},
+    { path: 'result/:id', component: ResultDetailsComponent}
 ];

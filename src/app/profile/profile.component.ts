@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { UserService } from '../app.services/user/user.service';
 import { User } from '../app.models/user.model';
 import { ActivatedRoute } from '@angular/router';
@@ -11,7 +11,6 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
-  providers: [UserService]
 })
 export class ProfileComponent {
 
@@ -26,10 +25,6 @@ export class ProfileComponent {
   ) {}
 
   ngOnInit() {
-    this.getRouteParams();
-  }
-
-  private getRouteParams(): void {
     this.route.params.subscribe((params) => {
       const username = params['username'];
       this.loadData(username);
@@ -59,6 +54,6 @@ export class ProfileComponent {
   }
 
   public details(id: number): void {
-    window.location.href = `/turniri/${id}`;
+    window.location.href = `/result/${id}`;
   }
 }
