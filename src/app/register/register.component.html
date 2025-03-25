@@ -1,0 +1,19 @@
+<div class="under-header">
+    <div class="container center">
+       <div class="form-socket center">
+        <form class="form" (ngSubmit)="addPlayer()">
+            <h2>Register</h2>
+            <div class="inputs">
+                <input type="text" name="firstName" placeholder="First name*" [(ngModel)]="registerUser.firstName">
+                <input type="text" name="lastName" placeholder="Last Name*" [(ngModel)]="registerUser.lastName">
+                <input type="email" name="email" placeholder="Email*" [(ngModel)]="registerUser.email" required>
+                <input type="text" name="username" placeholder="Username*" [(ngModel)]="registerUser.username">
+                <input type="password" name="password" placeholder="Password*" [(ngModel)]="registerUser.password">
+                <input type="password" name="repeatpassword" placeholder="Repeat password*" [(ngModel)]="repeatPassword">
+            </div>
+            <p style="margin: 0">{{message}}</p>
+            <input type="submit" class="button" value="Register">
+        </form>
+    </div>
+    </div>
+</div>

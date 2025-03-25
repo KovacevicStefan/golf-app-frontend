@@ -5,14 +5,14 @@
         </div>
         <div class="mb-5 bg-card" *ngIf="tournamentCount()">
             <ng-container *ngFor="let tournament of dataSource">
-                <div class="tournament my-1" (click)="details(tournament.id)">
+                <div class="tournament my-1" [routerLink]="['/tournament', tournament.id]">
                     <div class="info">
-                        <h3>{{tournament.name}}</h3>
-                        <p class="pg">{{tournament.description}}.</p>
-                        <p class="mb-0">{{tournament.date | date: "dd. MM. yyyy."}}</p>
+                        <h3>{{tournament?.name}}</h3>
+                        <p class="pg">{{tournament?.description}}</p>
+                        <p class="mb-0">{{tournament?.date | date: "dd. MM. yyyy."}}</p>
                    </div>
                    <div class="image center">
-                        <img class="image-tag" src="logo.png" width="500px" alt="">
+                        <img class="image-tag" src="/images/logo.png" width="500px" alt="">
                     </div>
                 </div>
             </ng-container>

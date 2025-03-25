@@ -1,13 +1,14 @@
-<header [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }" class="header center {{sharedService.style}}">
+<header [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }" class="header center">
     <div class="content container center">
-        <a href=""><img src="logo.png" width="80px" alt=""></a>
+        <a routerLink=""><img src="/images/logo.png" width="80px" alt=""></a>
         <div class="nav-bar">
             <ul class="menu">
-                <li><a [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }"  class="link" href="">Početna</a></li>
-                <li><a [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }"  class="link" href="/turniri">Turniri</a></li>
-                <li><a [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }"  class="link" href="">O nama</a></li>
+                <li><a [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }"  class="link" routerLink="">Početna</a></li>
+                <li><a [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }"  class="link" routerLink="/tournaments">Turniri</a></li>
+                <li><a [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }"  class="link" routerLink="">O nama</a></li>
                 <li><a [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }"  class="link" href="/#con">Kontakt</a></li>
-                <li><a [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }"  class="link active" href="/login">Prijavi se</a></li>
+                <li *ngIf="!authenticatedUser" ><a [ngClass]="{ 'scrolled': !isScrolled && isHome('/', '/#con') }"  class="link active" href="/login">Prijavi se</a></li>
+                <li *ngIf="authenticatedUser"><img routerLink="/account" src="{{authenticatedUser.image}}" class="avatar" alt="" width="40px" style="border-radius: 50%;"></li>
             </ul>
         </div>
         <button class="menu-button">

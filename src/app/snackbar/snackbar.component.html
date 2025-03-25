@@ -1,6 +1,5 @@
-<div class="sb-background">
-    <div [ngClass]="{ 'empty-required': isEmptyRequired }" class="snackbar sb-anim">
-        <p>{{snackMessage}}</p>
-        <a (click)="hideSnackBar()">U redu</a>
-    </div>
-</div>
+<div class="snackbar" *ngIf="message$ | async as message">
+    <p>{{ message }}</p>
+    <a (click)="hideSnackbar()">U redu</a>
+  </div>
+  

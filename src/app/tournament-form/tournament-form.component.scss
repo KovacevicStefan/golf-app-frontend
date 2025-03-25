@@ -1,0 +1,72 @@
+.background {
+    //background-color: var(--black-bg);
+    background: linear-gradient(#34352a, rgb(104, 117, 58));
+    min-height: calc(100vh - 100px);
+}
+
+.inside-box {
+    width: 100%;
+    min-height: 70vh;
+    //background-color: var(--card-bg);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    width: 50%;
+    background-color: rgb(43, 43, 43);
+    padding: 3em;
+    border-radius: 5px;
+    background-color: #000000b9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+}
+
+.input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: #34352a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.par {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.par-input {
+    width: 11%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    background-color: #34352a;
+    color: white;
+}
+
+.par-input::placeholder {
+    font-size: small;
+}
+
+.button {
+    border-radius: 5px;
+    border: none;
+    background-color: var(--green);
+    color: white;
+    padding: 0.5em 1em 0.5em 1em;
+    margin: 1em 0 0 0;
+}
+
+h2 {
+    margin: 0 0 1em 0;
+    color: gray;
+}

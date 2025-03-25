@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { SnackbarService } from '../app.services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-snackbar',
@@ -9,22 +10,13 @@ import { Component } from '@angular/core';
   styleUrl: './snackbar.component.scss'
 })
 export class SnackbarComponent {
+  constructor(private snackbarService: SnackbarService) {}
 
-  isEmptyRequired: boolean = true;
-  snackMessage?: string;
-
-  constructor() {
+  get message$() {
+    return this.snackbarService.message$;
   }
 
-  showSnackBar(message: string) : void {
-    this.isEmptyRequired = false;
-    this.snackMessage = message;
-    setTimeout(() => this.hideSnackBar() , 3000);
+  hideSnackbar() {
+    this.snackbarService.hideSnackbar();
   }
-  
-  hideSnackBar() : void {
-    this.isEmptyRequired = true;
-  }
-
-
 }
