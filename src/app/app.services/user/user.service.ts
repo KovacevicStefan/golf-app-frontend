@@ -9,13 +9,14 @@ import { Result } from '../../app.models/result.model';
 })
 export class UserService {
 
-  private API_URL = `http://localhost:8080/api/users/username`;
+  private API_URL = `http://localhost:8080/api/users`;
   private API_RESULTS = `http://localhost:8080/api/results`;
+  private API_AUTH = `http://localhost:8080/api/auth`;
 
   constructor(private httpClient: HttpClient) { }
 
   public getUserByUsername(username: string): Observable<User> {
-    return this.httpClient.get<User>(`${this.API_URL}/${username}`).pipe(
+    return this.httpClient.get<User>(`${this.API_URL}/username/${username}`).pipe(
       catchError((error: HttpErrorResponse) => {
         return throwError(() => new Error(error.message));
       })
@@ -31,6 +32,38 @@ export class UserService {
         return throwError(() => new Error(error.message));
       })
     );
+  }
+
+  public createPlayer(player: any): Observable<any> {
+    return this.httpClient.post(`${this.API_AUTH}/signup`, player).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(() => console.log(error.message));
+      })
+    );
+  }
+
+  public login(credentials: any): Observable<any> {
+    return this.httpClient.post(`${this.API_AUTH}/login`, credentials).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(() => console.log(error.message));
+      })
+    );
+  }
+
+  public logout(): Observable<any> {
+    return this.httpClient.get(`${this.API_AUTH}/logout`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(() => console.log(error.message));
+      })
+    );
+  }
+
+  public getProfileData(): Observable<any> {
+    return this.httpClient.get<any>(`${this.API_URL}/me`).pipe(
+      catchError(() => {
+        return of(null);
+      })
+    )
   }
 
 }

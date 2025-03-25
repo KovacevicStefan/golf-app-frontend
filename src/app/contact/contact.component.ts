@@ -1,14 +1,14 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Email } from '../app.models/email.model';
 import { EmailService } from '../app.services/email/email.service';
 import { CommonModule } from '@angular/common';
-import { SnackbarComponent } from '../snackbar/snackbar.component';
+import { SnackbarService } from '../app.services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [FormsModule, CommonModule, SnackbarComponent],
+  imports: [FormsModule, CommonModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
   providers: [Email]
@@ -16,20 +16,18 @@ import { SnackbarComponent } from '../snackbar/snackbar.component';
 export class ContactComponent {
 
   email: string = "info@my-domain.com";
-  
-  @ViewChild(SnackbarComponent) snackBar!: SnackbarComponent;
 
-  constructor(private service: EmailService, public message: Email) {
+  constructor(private service: EmailService, public message: Email, private snackbarService: SnackbarService) {
   }
 
   sendMessage() {
     if (this.message.name && this.message.lastName && this.message.email) {
-        this.service.sendEmail(this.message);
-        this.snackBar.showSnackBar("Email je uspešno poslat! Uskoro očekujte odgovor.");  
-        this.message.reset();
+      this.service.sendEmail(this.message);
+      this.snackbarService.showSnackbar("Email je uspešno poslat! Uskoro očekujte odgovor.");
+      this.message.reset();
     } else {
-        this.snackBar.showSnackBar("Niste uneli sve obavezne podatke!");
+      this.snackbarService.showSnackbar("Niste uneli sve obavezne podatke!");
     }
-}
+  }
 
 }

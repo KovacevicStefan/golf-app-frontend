@@ -1,0 +1,24 @@
+<div class="under-header background">
+    <div class="container center">
+        <div class="mt-5 mb-2 inside-box">
+            <form (submit)="createTournament(tournament)" style="display: flex; flex-direction: column;">
+                <h2>Kreiraj turnir</h2>
+                <input class="input" [(ngModel)]="tournament.name" name="name" type="text" placeholder="Naziv turnira">
+                <input class="input" [(ngModel)]="tournament.location" name="location" type="text" placeholder="Lokacija">
+                <input class="input" [(ngModel)]="tournament.description" name="description" type="text" placeholder="Opis">
+                <input class="input" [(ngModel)]="tournament.roundNumber" name="roundNumber" type="text" placeholder="Broj rundi">
+                <input class="input" [(ngModel)]="tournament.holeNumber" name="holeNumber" type="text" placeholder="Broj rupa" (input)="updatePars()">
+                <div class="par">
+                    <input class="par-input" *ngFor="let par of tournament.pars; let i = index"
+                           [(ngModel)]="par.par"
+                           name="par{{ i }}"
+                           type="text"
+                           placeholder="PAR {{ par.holeNumber }}">
+                </div>
+                <div>
+                    <button class="button" type="submit">Kreiraj turnir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

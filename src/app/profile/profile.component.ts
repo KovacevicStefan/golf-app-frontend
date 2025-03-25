@@ -1,14 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { UserService } from '../app.services/user/user.service';
 import { User } from '../app.models/user.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { TournamentsService } from '../app.services/tournaments/tournaments.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })

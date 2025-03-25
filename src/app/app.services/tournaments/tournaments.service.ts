@@ -1,6 +1,6 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable, of, throwError } from 'rxjs';
 import { Tournament } from '../../app.models/tournament.model';
 import { TournamentPlayer } from '../../app.models/tournament.player.model';
 
@@ -17,10 +17,11 @@ export class TournamentsService {
   constructor(private httpClient: HttpClient) {}
 
   public getAllTournaments(): Observable<Tournament[]> {
+
     return this.httpClient.get<Tournament[]>(this.API_URL).pipe(
       catchError((error: HttpErrorResponse) => {
-        //console.log(error.name + ' ' + error.message);
-        return throwError(() => new Error(error.message));
+        //console.error(`Error while fetching tournaments: ${error.message}`);
+        return of([]);
       })
     );
   }
@@ -28,7 +29,8 @@ export class TournamentsService {
   public getTournamentById(id: number): Observable<Tournament> {
     return this.httpClient.get<Tournament>(`${this.API_URL}/${id}`).pipe(
       catchError((error: HttpErrorResponse) => {
-        return throwError(() => new Error(error.message));
+        console.error(error.message);
+        return of ();
       })
     );
   }
@@ -36,7 +38,8 @@ export class TournamentsService {
   public getPlayersByTournamentId(id: number): Observable<TournamentPlayer[]> {
     return this.httpClient.get<TournamentPlayer[]>(`${this.API_PLAYERS}/tournament/${id}`).pipe(
       catchError((error: HttpErrorResponse) => {
-        return throwError(() => new Error(error.message));
+        console.error(error.message);
+        return of ();
       })
     );
   }
@@ -80,4 +83,23 @@ export class TournamentsService {
       })
     );
   }
+
+  public registerPlayerToTournament(request: any): Observable<any> {
+    return this.httpClient.post<any>(`http://localhost:8080/api/players`, request).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error(error.message);
+        return of ([]);
+      })
+    );
+  }
+
+  public createTournament(tournament: any): Observable<any> {
+    return this.httpClient.post<any>(`${this.API_URL}`, tournament).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error("Cannot create tournament.");
+        return of ([]);
+      })
+    )
+  }
+
 }

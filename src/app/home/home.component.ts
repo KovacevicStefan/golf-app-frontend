@@ -1,25 +1,22 @@
 import { Component } from '@angular/core';
 import { ContactComponent } from '../contact/contact.component';
-import { HeaderComponent } from '../header/header.component';
-import { SharedService } from '../shared.service';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ContactComponent],
+  imports: [ContactComponent, RouterModule, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
 
-  sharedService: SharedService;
+  authenticated = localStorage.getItem("token");
+  authUser = localStorage.getItem("authUser");
 
-  constructor(sharedService: SharedService) {
-    this.sharedService = sharedService;
-  }
+  constructor() { }
 
-  ngOnInit() {
-    this.sharedService.style = "";
-  }
+  ngOnInit() { }
 
 }

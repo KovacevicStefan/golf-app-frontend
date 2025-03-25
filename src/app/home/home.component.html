@@ -6,8 +6,8 @@
             Pratite rezultate golfa na jednostavan i pregledan način. 
             Vaš učinak na terenu sada je uvek na dohvat ruke! Organizujte turnire i delite uspehe sa prijateljima uz samo nekoliko klikova.
           </p>
-          <div class="btn-register">
-            <a class="link active b-big" href="">Registuj se</a>
+          <div *ngIf="!authenticated" class="btn-register">
+            <a class="link active b-big" routerLink="/register">Registuj se</a>
           </div>
         </div>
     </div>

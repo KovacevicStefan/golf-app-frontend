@@ -11,7 +11,7 @@
         </div>
         <div class="bg-card">
             <div *ngFor="let round of rounds" class="result">
-                <div class="round">{{round.indexNumber}}. runda</div>
+                <div class="round">{{round?.indexNumber}}. runda</div>
                 <div class="holes">
 <!--                     <div class="top">
                         <p class="label">Rupa</p>
@@ -41,8 +41,8 @@
             </div>
             <div class="legend">
                 <div *ngFor="let score of scoreCategories">
-                    <input id="{{score.color}}" type="text" disabled>
-                    <label>{{score.name}}</label>
+                    <input id="{{score?.color}}" type="text" disabled>
+                    <label>{{score?.name}}</label>
                 </div>
             </div>
         </div>

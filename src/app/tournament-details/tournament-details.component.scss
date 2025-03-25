@@ -82,3 +82,16 @@
     font-size: small;
     margin: 0;
 }
+
+button {
+    color: white;
+    background-color: var(--green);
+    border: none;
+    padding: 0.3em 0.5em 0.3em 0.5em;
+    border-radius: 5px;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background-color: #4b4134;
+}
