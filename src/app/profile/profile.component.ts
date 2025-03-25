@@ -53,4 +53,7 @@ export class ProfileComponent {
     });
   }
 
+  public details(id: number): void {
+    window.location.href = `/result/${id}`;
+  }
 }
