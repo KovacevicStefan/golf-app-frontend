@@ -1,9 +1,11 @@
 export interface Tournament {
     id: number;
     name: string;
-    date: Date;
     status: boolean;
     location: string;
     description: string;
-    rounds: number;
+    startDate: Date;
+    endDate: Date;
+    roundNumber: number;
+    holeNumber: number;
 }

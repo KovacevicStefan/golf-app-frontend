@@ -1,6 +1,30 @@
 <div class="under-header background">
-    <div class="container">
-        <p>{{authUser?.username}} works!</p>
-    <button (click)="logout()">Logout</button>
+    <div class="container pb-5" *ngIf="authUser$ | async as authUser; else loading">
+        <div class="pt-5 pb-4 heading">
+            <div class="profile">
+                <img class="image-tag" src="{{authUser?.image}}" width="100px" alt="">
+                <h1>{{authUser?.firstName}} {{authUser?.lastName}}</h1>
+            </div>
+        </div>
+
+        <div class="bg-card">
+            <h3 class="pb-3 sub-heading">Informacije o profilu</h3>
+            
+            <div>
+                <p>Ime: {{authUser.firstName}}</p>
+                <p>Prezime: {{authUser?.lastName}}</p>
+                <p>Username: {{authUser?.username}}</p>
+                <p>Email: {{authUser?.email}}</p>
+            </div>
+
+            <!-- <h3 class="py-3 sub-heading">Rezultati</h3>
+             -->
+            <div class="py-3">
+                <button (click)="logout()">Odjavi se</button>
+            </div>
+        </div>
     </div>
+    <ng-template #loading>
+        <div class="container pb-5">Ucitavanje podataka...</div>
+    </ng-template>
 </div>

@@ -7,23 +7,47 @@
             <div class="description">
                 <h1>{{tournament?.name}}</h1>
                 <p class="pg">{{tournament?.description}}</p>
-                <button *ngIf="user" (click)="registerPlayerToTournament(user.id, tournament.id)" >Prijavi se</button>
+                <button *ngIf="user && showButton" (click)="openDialog(tournament, user)" >Prijavi se</button>
             </div>
         </div>
         <div class="box mb-5">
             <div class="players-text">
-                <h3 class="pb-3 sub-heading">Prijavljeni igraci</h3>
+                <h3 class="pb-3 sub-heading" *ngIf="!tournament?.status">Prijavljeni igraci</h3>
+                <h3 class="pb-3 sub-heading" *ngIf="tournament?.status">Tabela</h3>
             </div>
             <div class="content">
-                <div class="single-player" *ngFor="let player of players" [routerLink]="['/profile', player?.playerUsername]" >
-                    <div class="image">
-                        <img src="{{player?.playerImage}}" alt="" width="45px">
-                    </div>
-                    <div>
-                        <p style="margin: 0;">{{player?.playerUsername}}</p>
-                        <p class="date">Prijavljen/a: {{player?.dateJoined | date: "dd. MM. yyyy."}}</p>
+
+                <div *ngIf="!tournament?.status">
+                    <div class="single-player" *ngFor="let player of players" [routerLink]="['/profile', player?.playerUsername]">
+                        <div class="image">
+                            <img src="{{player?.playerImage}}" alt="" width="45px">
+                        </div>
+                        <div>
+                            <p style="margin: 0;">{{player?.playerUsername}}</p>
+                            <p class="date">Prijavljen/a: {{player?.dateJoined | date: "dd. MM. yyyy."}}</p>
+                        </div>
                     </div>
                 </div>
+
+                <table class="customTable" *ngIf="tournament?.status && results?.length > 0">
+                    <thead>
+                        <tr>
+                            <th style="border-top-left-radius: 5px;">Igrac/ica</th>
+                            <th>PAR</th>
+                            <th *ngFor="let round of results[0]?.roundResults">Runda {{round.roundIndex}}
+                            <th style="border-top-right-radius: 5px;">Ukupno</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let result of results">
+                        <tr class="player" [routerLink]="['/result', result.resultId]">
+                            <td>{{result.username}}</td>
+                            <td>{{result.totalPar}}</td>
+                            <td *ngFor="let round of result.roundResults"> {{round.totalStrokes}} </td>
+                            <td>{{result.totalStrokes}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
         </div>
     </div>

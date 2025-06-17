@@ -4,6 +4,7 @@ import { TournamentsService } from '../app.services/tournaments/tournaments.serv
 import { Tournament } from '../app.models/tournament.model';
 import { UserService } from '../app.services/user/user.service';
 import { RouterModule } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -15,24 +16,12 @@ import { RouterModule } from '@angular/router';
 })
 export class TournamentsComponent {
 
-  dataSource?: Tournament[];
-  tournamentLength?: number;
+  data$!: Observable<Tournament[]>;
 
-  constructor(private service: TournamentsService, private userService: UserService) {}
+  constructor(private service: TournamentsService) {}
 
   ngOnInit(): void {
-    this.loadData();
-  }
-
-  tournamentCount(): boolean {
-    return this.tournamentLength! > 0 ? true : false;
-  }
-
-  public loadData() {
-    this.service.getAllTournaments().subscribe(data => {
-      this.dataSource = data;
-      this.tournamentLength = this.dataSource.length;
-    });
+    this.data$ = this.service.getAllTournaments();
   }
 
 }

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { TournamentsService } from '../app.services/tournaments/tournaments.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { SnackbarService } from '../app.services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-tournament-form',
@@ -18,14 +20,18 @@ export class TournamentFormComponent {
     description: '',
     roundNumber: '',
     holeNumber: '',
+    status: true,
+    startDate: '01-01-2000',
+    endDate: '01-01-2000',
     pars: [] as { holeNumber: number, par: number }[]
   };
 
-  constructor(private tournamentService: TournamentsService) {}
+  constructor(private tournamentService: TournamentsService, private router: Router, private snackbar: SnackbarService) {}
 
   public createTournament(tournament: any) {
     this.tournamentService.createTournament(tournament).subscribe(() => {
-      window.location.href = '/tournaments';
+      this.router.navigate(['/tournaments']);
+      this.snackbar.showSnackbar(`Uspesno ste kreirali turnir ${tournament.name}!`);
     });
   }
 

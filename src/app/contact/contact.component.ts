@@ -1,33 +1,39 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Email } from '../app.models/email.model';
-import { EmailService } from '../app.services/email/email.service';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormBuilder, Validators, Form } from '@angular/forms';
+import { EmailService } from '../app.services/email/email.service';
 import { SnackbarService } from '../app.services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
-  providers: [Email]
 })
 export class ContactComponent {
 
-  email: string = "info@my-domain.com";
+  email: string = 'info@my-domain.com';
+  fb: FormBuilder = inject(FormBuilder);
 
-  constructor(private service: EmailService, public message: Email, private snackbarService: SnackbarService) {
-  }
+  constructor(private service: EmailService, private snackbar: SnackbarService) {}
+
+  contactForm = this.fb.group({
+    name: ['', Validators.required],
+    lastName: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    subject: [''],
+    message: ['']
+  });
 
   sendMessage() {
-    if (this.message.name && this.message.lastName && this.message.email) {
-      this.service.sendEmail(this.message);
-      this.snackbarService.showSnackbar("Email je uspešno poslat! Uskoro očekujte odgovor.");
-      this.message.reset();
+    if (this.contactForm.valid) {
+      this.service.sendEmail(this.contactForm.value);
+      this.snackbar.showSnackbar('Email je uspešno poslat! Uskoro očekujte odgovor.');
+      this.contactForm.reset();
     } else {
-      this.snackbarService.showSnackbar("Niste uneli sve obavezne podatke!");
+      this.snackbar.showSnackbar('Niste uneli sve obavezne podatke ili podaci nisu u ispravnom formatu!');
+      this.contactForm.markAllAsTouched();
     }
   }
-
 }

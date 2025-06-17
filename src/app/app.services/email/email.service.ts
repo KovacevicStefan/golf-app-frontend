@@ -11,7 +11,7 @@ export class EmailService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public sendEmail(email: Email): void {
+  public sendEmail(email: any): void {
     this.httpClient.post(this.API_URL, email).subscribe();
   }
 

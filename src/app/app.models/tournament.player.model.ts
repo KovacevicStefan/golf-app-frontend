@@ -1,9 +1,10 @@
-import { Tournament } from "./tournament.model";
-import { User } from "./user.model";
-
 export interface TournamentPlayer {
-    id: number;
-    tournament: Tournament;
-    player: User;
-    dateJoined: Date;
+    playerId: number,
+    tournamentId: number,
+    dateJoined: Date,
+    playerUsername: string,
+    tournamentName: string,
+    playerImage: string,
+    resultId: number,
+    status: boolean
 }

@@ -2,3 +2,52 @@
     background-color: var(--black-bg);
     min-height: calc(100vh - 100px);
 }
+
+.profile {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.profile h1 {
+    margin: 0;
+    font-weight: 200;
+}
+
+img {
+    border-radius: 50%;
+    margin-right: 2em;
+}
+
+.bg-card {
+    color: white;
+    background-color: #262522;
+    border-radius: 5px;
+    width: 100%;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    color: white;
+    background-color: var(--green);
+    border: none;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    border-radius: 5px;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background-color: #4b4134;
+}
+
+.sub-heading {
+    font-weight: 300;
+}
+
+p {
+    margin: 0;
+}

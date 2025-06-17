@@ -41,6 +41,7 @@ form {
     max-width: 100%;
     flex-wrap: wrap;
     gap: 5px;
+    margin-bottom: 0.5em;
 }
 
 .par-input {
@@ -69,4 +70,9 @@ form {
 h2 {
     margin: 0 0 1em 0;
     color: gray;
+}
+
+label {
+    color: white;
+    margin-bottom: 0.5em;
 }

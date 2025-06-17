@@ -8,15 +8,17 @@ import { ResultDetailsComponent } from './result-details/result-details.componen
 import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './account/account.component';
 import { TournamentFormComponent } from './tournament-form/tournament-form.component';
+import { authGuard } from './app.services/guards/auth.guard';
+import { loginGuard } from './app.services/guards/login.guard';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'tournaments', component: TournamentsComponent },
-    { path: 'tournament/:id', component: TournamentDetailsComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'profile/:username', component: ProfileComponent},
-    { path: 'result/:id', component: ResultDetailsComponent},
-    { path: 'register', component: RegisterComponent},
-    { path: 'account', component: AccountComponent},
-    { path: 'tournament-create', component: TournamentFormComponent }
+    { path: 'tournament/:id', component: TournamentDetailsComponent},
+    { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
+    { path: 'profile/:username', component: ProfileComponent, canActivate: [authGuard]},
+    { path: 'result/:id', component: ResultDetailsComponent, canActivate: [authGuard]},
+    { path: 'register', component: RegisterComponent, canActivate: [loginGuard]},
+    { path: 'account', component: AccountComponent, canActivate: [authGuard]},
+    { path: 'tournament-create', component: TournamentFormComponent, canActivate: [authGuard]}
 ];

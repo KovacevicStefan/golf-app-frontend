@@ -12,8 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent {
 
-  authenticated = localStorage.getItem("token");
-  authUser = localStorage.getItem("authUser");
+  authenticated = localStorage.getItem("token") ? true : false;
 
   constructor() { }
 

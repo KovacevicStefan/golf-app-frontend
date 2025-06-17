@@ -7,6 +7,10 @@
                 <input class="input" [(ngModel)]="tournament.location" name="location" type="text" placeholder="Lokacija">
                 <input class="input" [(ngModel)]="tournament.description" name="description" type="text" placeholder="Opis">
                 <input class="input" [(ngModel)]="tournament.roundNumber" name="roundNumber" type="text" placeholder="Broj rundi">
+                <select class="input" [(ngModel)]="tournament.status" name="status">
+                    <option value="true">Aktivan</option>
+                    <option value="false">Neaktivan</option>
+                </select>
                 <input class="input" [(ngModel)]="tournament.holeNumber" name="holeNumber" type="text" placeholder="Broj rupa" (input)="updatePars()">
                 <div class="par">
                     <input class="par-input" *ngFor="let par of tournament.pars; let i = index"
@@ -15,6 +19,10 @@
                            type="text"
                            placeholder="PAR {{ par.holeNumber }}">
                 </div>
+                <label for="">Datum pocetka:</label>
+                <input type="date" class="input" name="startDate" [(ngModel)]="tournament.startDate">
+                <label for="">Datum zavrsetka:</label>
+                <input type="date" class="input" name="endDate" [(ngModel)]="tournament.endDate">
                 <div>
                     <button class="button" type="submit">Kreiraj turnir</button>
                 </div>

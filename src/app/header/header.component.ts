@@ -19,8 +19,11 @@ export class HeaderComponent {
 
   ngOnInit() {
     const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-    scrollPosition ? this.isScrolled = true : this.isScrolled = false;
-    this.getProfileData();
+    this.isScrolled = scrollPosition > 0;
+
+    this.userService.authenticatedUser$.subscribe(user => {
+      this.authenticatedUser = user;
+    });
   }
 
   isHome(route: string, routecon: string): boolean {

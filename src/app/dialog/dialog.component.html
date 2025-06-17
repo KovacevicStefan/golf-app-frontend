@@ -1,0 +1,13 @@
+<div class="dialog center" *ngIf="tournament$ | async as tournament">
+    <div *ngIf="user$ | async as user">
+        <div class="dialog-body">
+            <div class="upper center">
+                <p style="margin: 0;">{{user.username}} da li ste sigurni da zelite da se prijavite na {{ tournament.name }}?</p>
+            </div>
+            <div class="down center">
+                <button class="button" (click)="confirmDialog(user, tournament)">Prijavi se</button>
+                <button class="button" (click)="hideDialog()">Odustani</button>
+            </div>
+        </div>
+    </div>
+</div>

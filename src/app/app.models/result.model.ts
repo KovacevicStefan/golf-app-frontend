@@ -1,10 +1,9 @@
-import { Round } from "./round.model";
+import { Strokes } from "./strokes.model";
 
 export interface Result {
-    id: number;
-    holeNumber: number;
-    par: number;
-    strokes: number;
-    score: string;
-    round: Round;
+    resultId: number;
+    username: string,
+    totalPar: number;
+    totalStrokes: number;
+    roundResults: Strokes[]
 }

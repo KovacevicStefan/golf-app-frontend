@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { UserService } from '../app.services/user/user.service';
 import { FormsModule } from '@angular/forms';
+import { SnackbarService } from '../app.services/snackbar/snackbar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -21,10 +23,8 @@ export class RegisterComponent {
   };
 
   repeatPassword = ``;
-
-  message = ``;
-
-  constructor(private service: UserService) {}
+  
+  constructor(private service: UserService, private snackbar: SnackbarService, private router: Router) {}
 
 
   public validatePassword(): boolean {
@@ -35,9 +35,10 @@ export class RegisterComponent {
   public addPlayer() {
     if(this.validatePassword()) {
       this.service.createPlayer(this.registerUser).subscribe();
-    this.message = `Uspesno je kreiran nalog ${this.registerUser.username}`;
+      this.router.navigate(['/']);
+      this.snackbar.showSnackbar(`Uspesno je kreiran nalog ${this.registerUser.username}`);
     } else {
-      this.message = `Lozinke se ne podudaraju. Pokusaj ponovo.`;
+      this.snackbar.showSnackbar(`Lozinke se ne podudaraju. Pokusaj ponovo.`);
     }
  
   }

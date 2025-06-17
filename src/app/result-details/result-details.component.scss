@@ -9,11 +9,15 @@
     background-color: #262522;
     border-radius: 5px;
     width: 100%;
-    padding: 3rem;
+    padding: 3em;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1em;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sub-heading {
+    font-weight: 300;
 }
 
 .result {
@@ -70,7 +74,6 @@ th, td {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(185, 201, 178, 0.192);
-    //height: 30px;
     font-size: small;
 }
 
@@ -89,6 +92,12 @@ th, td {
     gap: 1em;
     align-items: center;
     padding-left: 1em;
+    transition: 0.2s ease;
+}
+
+.profile:hover {
+    cursor: pointer;
+    opacity: 70%;
 }
 
 .profile h5 {
@@ -99,7 +108,7 @@ img {
     border-radius: 50%;
 }
 
-input {
+.legend input {
     width: 20px;
     aspect-ratio: 1;
     margin: 1em;
@@ -115,6 +124,10 @@ input {
     background-color: #34352a;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    width: 10px;
 }
 
 @media (max-width: 1024px) {
@@ -134,31 +147,31 @@ input {
 }
 
 #DOUBLE_EAGLE {
-    background-color: #4B9CD3;
+    background-color: #009845;
 }
 
 #EAGLE {
-    background-color: #3A7CA5;
+    background-color: #388E3C;
 }
 
 #BIRDIE {
-    background-color: #2f6e4e;
+    background-color: #C7A500;
 }
 
 #PAR {
-    background-color: #1E4D2B;
+    background-color: #D17E00;
 }
 
 #BOGEY {
-    background-color: #5A5A5A;
+    background-color: #A32A2A;
 }
 
 #DOUBLE_BOGEY {
-    background-color: #403F4C;
+    background-color: #811818;
 }
 
 #THREE_PLUS_BOGEY {
-    background-color: #423850;
+    background-color: #5A0000;
 }
 
 .heading {
@@ -196,4 +209,31 @@ tbody tr::after {
 
 tbody tr {
     position: relative;
+}
+
+.edit {
+    background-color: #52534800;
+    box-shadow: none;
+    color: white;
+    margin: 0;
+    border: none;
+    text-align: center;
+    padding: 0;
+}
+
+.edit:focus {
+    outline: none;
+}
+
+button {
+    color: white;
+    background-color: var(--green);
+    border: none;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    border-radius: 5px;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background-color: #4b4134;
 }

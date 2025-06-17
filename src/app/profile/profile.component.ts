@@ -1,9 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from '../app.services/user/user.service';
 import { User } from '../app.models/user.model';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { TournamentsService } from '../app.services/tournaments/tournaments.service';
 import { CommonModule } from '@angular/common';
+import { TournamentPlayer } from '../app.models/tournament.player.model';
+import { Result } from '../app.models/result.model';
 
 @Component({
   selector: 'app-profile',
@@ -15,14 +17,10 @@ import { CommonModule } from '@angular/common';
 export class ProfileComponent {
 
   profileData?: User;
-  userTournaments?: any[];
+  userTournaments?: TournamentPlayer[];
   tournamentResults: { [resultId: number]: any } = {};
 
-  constructor(
-    private service: UserService,
-    private route: ActivatedRoute,
-    private tournamentService: TournamentsService
-  ) {}
+  constructor(private service: UserService, private route: ActivatedRoute, private tournamentService: TournamentsService) {}
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
