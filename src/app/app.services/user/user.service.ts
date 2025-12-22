@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, of, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, of, tap, throwError } from 'rxjs';
 import { User } from '../../app.models/user.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Result } from '../../app.models/result.model';
@@ -30,6 +30,14 @@ export class UserService {
     this.authUserSubject.next(user);
   }
 
+  public activateProfile(user: any): Observable<any> {
+    return this.httpClient.post(`${this.API_AUTH}/verify`, user).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(() => error);
+      })
+    );
+  }
+
   public getUserByUsername(username: string): Observable<User> {
     return this.httpClient.get<User>(`${this.API_URL}/username/${username}`).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -50,38 +58,36 @@ export class UserService {
   }
 
   public createPlayer(player: any): Observable<any> {
-    return this.httpClient.post(`${this.API_AUTH}/signup`, player).pipe(
+    return this.httpClient.post(`${this.API_AUTH}/register`, player).pipe(
       catchError((error: HttpErrorResponse) => {
-        return throwError(() => console.log(error.message));
+        return throwError(() => error);
       })
     );
   }
 
   public login(credentials: any): Observable<any> {
-    return this.httpClient.post(`${this.API_AUTH}/login`, credentials).pipe(
-      catchError((error: HttpErrorResponse) => {
-        return throwError(() => console.log(error.message));
-      })
-    );
+    return this.httpClient.post(`${this.API_AUTH}/login`, credentials);
   }
 
-  public logout(): Observable<any> {
+  public logout() {
     this.setAuthenticatedUser(null);
     localStorage.removeItem("token");
     clearTimeout(this.logoutTimer);
-    return this.httpClient.get(`${this.API_AUTH}/logout`).pipe(
-      catchError((error: HttpErrorResponse) => {
-        return throwError(() => console.log(error.message));
-      })
-    );
+    this.router.navigate(['/']);
+    this.snackbar.showSnackbar("Uspesno ste se odjavili!");
   }
 
+
   public getProfileData(): Observable<User | null> {
-    return this.httpClient.get<User>(`${this.API_URL}/me`).pipe(
+    if(!localStorage.getItem('token')) {
+      return of(null);
+    } else {
+      return this.httpClient.get<User>(`${this.API_URL}/me`).pipe(
       catchError(() => {
         return of(null);
       })
-    )
+    );
+    }
   }
 
   public scheduleAutoLogout(expiresIn: number) {

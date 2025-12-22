@@ -33,14 +33,16 @@ export class RegisterComponent {
 
 
   public addPlayer() {
-    if(this.validatePassword()) {
-      this.service.createPlayer(this.registerUser).subscribe();
-      this.router.navigate(['/']);
-      this.snackbar.showSnackbar(`Uspesno je kreiran nalog ${this.registerUser.username}`);
-    } else {
-      this.snackbar.showSnackbar(`Lozinke se ne podudaraju. Pokusaj ponovo.`);
+      if(this.validatePassword()) {
+        this.service.createPlayer(this.registerUser).subscribe({
+        next: () => {
+          this.router.navigate(['/']);
+          this.snackbar.showSnackbar(`Uspesno je kreiran nalog ${this.registerUser.username}`);
+        },
+        error: (error) => {
+          this.snackbar.showSnackbar(`${error.error.error_description}`);
+        }
+      });
     }
- 
   }
-
 }

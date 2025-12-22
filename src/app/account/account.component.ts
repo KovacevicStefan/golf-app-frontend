@@ -17,16 +17,18 @@ export class AccountComponent {
 
   authUser$!: Observable<User | null>;
 
-  constructor(private userService: UserService, private router: Router, private snackbar: SnackbarService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
     this.authUser$ = this.userService.getProfileData();
   }
 
+  public activateAccount(userId: number) {
+    this.router.navigate([`/activate/${userId}`]);
+  }
+
   public logout() {
-    this.userService.logout().subscribe();
-    this.router.navigate(['/']);
-    this.snackbar.showSnackbar("Uspesno ste se odjavili!");
+    this.userService.logout();
   }
 
 }

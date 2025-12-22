@@ -33,7 +33,6 @@ export class TournamentDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getRouteParams();
-
     this.dialogService.playerRegistered$
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {

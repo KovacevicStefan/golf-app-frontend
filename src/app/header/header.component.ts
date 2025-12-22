@@ -40,9 +40,9 @@ export class HeaderComponent {
   }
 
   public getProfileData() {
-    return this.userService.getProfileData().subscribe(data => {
+      return this.userService.getProfileData().subscribe(data => {
       this.authenticatedUser = data;
-    })
+    });
   }
 
 }
