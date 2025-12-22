@@ -31,8 +31,8 @@ export class LoginComponent {
         this.router.navigate(['/account']);
         this.snackbarService.showSnackbar("Uspesno ste se prijavili!");
       });
-    },() => {
-      this.snackbarService.showSnackbar("Pogresno korisnicko ime ili lozinka. Pokusajte ponovo.");
+    }, error => {
+      this.snackbarService.showSnackbar(error.error.error_description);
   });
   }
 }

@@ -9,17 +9,13 @@
 
         <div class="bg-card">
             <h3 class="pb-3 sub-heading">Informacije o profilu</h3>
-            
             <div>
                 <p>Ime: {{authUser.firstName}}</p>
                 <p>Prezime: {{authUser?.lastName}}</p>
                 <p>Username: {{authUser?.username}}</p>
                 <p>Email: {{authUser?.email}}</p>
             </div>
-
-            <!-- <h3 class="py-3 sub-heading">Rezultati</h3>
-             -->
-            <div class="py-3">
+            <div class="py-3 button-group">
                 <button (click)="logout()">Odjavi se</button>
             </div>
         </div>

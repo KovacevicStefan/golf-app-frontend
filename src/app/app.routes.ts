@@ -10,6 +10,7 @@ import { AccountComponent } from './account/account.component';
 import { TournamentFormComponent } from './tournament-form/tournament-form.component';
 import { authGuard } from './app.services/guards/auth.guard';
 import { loginGuard } from './app.services/guards/login.guard';
+import { ActivateProfileComponent } from './activate-profile/activate-profile.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -20,5 +21,6 @@ export const routes: Routes = [
     { path: 'result/:id', component: ResultDetailsComponent, canActivate: [authGuard]},
     { path: 'register', component: RegisterComponent, canActivate: [loginGuard]},
     { path: 'account', component: AccountComponent, canActivate: [authGuard]},
-    { path: 'tournament-create', component: TournamentFormComponent, canActivate: [authGuard]}
+    { path: 'tournament-create', component: TournamentFormComponent, canActivate: [authGuard]},
+    { path: 'activate', component: ActivateProfileComponent}
 ];

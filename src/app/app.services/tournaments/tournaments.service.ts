@@ -114,8 +114,8 @@ export class TournamentsService {
     );
   }
 
-  public updateHole(holeDTO: any): Observable<any> {
-    return this.httpClient.put(`${this.API_HOLES}/${holeDTO.id}`, holeDTO);
+  public updateHoles(holeDTO: any[]): Observable<any[]> {
+    return this.httpClient.put<any[]>(`${this.API_HOLES}`, holeDTO);
   }
   
 
